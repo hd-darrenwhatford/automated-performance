@@ -6,28 +6,43 @@
 </head>
 <body>
 
+<!-- Output data from the database -->
+<div id="output"></div>
+
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
+<!-- Allow the database to be used -->
+<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-database.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
 
 <script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyCA_mM9FFLpxGzZrAWoV3ckC7LPqDrmLzg",
-    authDomain: "automated-performance.firebaseapp.com",
-    databaseURL: "https://automated-performance.firebaseio.com",
-    projectId: "automated-performance",
-    storageBucket: "automated-performance.appspot.com",
-    messagingSenderId: "391320435503",
-    appId: "1:391320435503:web:6241d51d37c2f51dce7fda",
-    measurementId: "G-2SCLJLN567"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
+	// Your web app's Firebase configuration
+	var firebaseConfig = {
+		apiKey: "AIzaSyCA_mM9FFLpxGzZrAWoV3ckC7LPqDrmLzg",
+		authDomain: "automated-performance.firebaseapp.com",
+		databaseURL: "https://automated-performance.firebaseio.com",
+		projectId: "automated-performance",
+		storageBucket: "automated-performance.appspot.com",
+		messagingSenderId: "391320435503",
+		appId: "1:391320435503:web:6241d51d37c2f51dce7fda",
+		measurementId: "G-2SCLJLN567"
+	};
+
+  	// Initialize Firebase
+	firebase.initializeApp(firebaseConfig);
+	firebase.analytics();
+
+	// Get a reference to the database
+	var ref = firebase.database().ref('/'); 
+	// On any "value event" pass a snapshot of the database to the callback function                          
+	ref.on('value', function(snapshot) {
+		// Stringify the JSON document and output the data to the HTML document
+		output.innerHTML = JSON.stringify(snapshot.val(), null, 2);
+	});
 </script>
 
 <body>
