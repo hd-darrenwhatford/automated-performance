@@ -59,6 +59,11 @@
 			dbVal.innerHTML = childNodes.val();
 		});
 	});
+
+	// Add a value to the database but this overwrites what has gone before
+	ref.set({
+		"test2": "Dan"
+	});
 </script>
 
 <body>
