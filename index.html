@@ -41,6 +41,7 @@
 
 	// Get a reference to the database
 	var ref = firebase.database().ref('/'); 
+	console.log(ref);
 
 	var dbVal = document.getElementById("dbVal");
 
@@ -61,8 +62,15 @@
 	});
 
 	// Add a value to the database but this overwrites what has gone before
+	/*
 	ref.set({
 		"test2": "Dan"
+	});
+	*/
+
+	// Add additional value to the database using the update method
+	ref.update({
+		"test3": "Darren"
 	});
 </script>
 
