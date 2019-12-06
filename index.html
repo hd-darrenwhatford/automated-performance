@@ -9,6 +9,9 @@
 <!-- Output data from the database -->
 <div id="output"></div>
 
+<!-- Individual value from the database -->
+<div id="dbVal"></div>
+
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
 
@@ -38,10 +41,23 @@
 
 	// Get a reference to the database
 	var ref = firebase.database().ref('/'); 
+
+	var dbVal = document.getElementById("dbVal");
+
 	// On any "value event" pass a snapshot of the database to the callback function                          
 	ref.on('value', function(snapshot) {
+		// Console log the snapshot of the database
+		console.log(snapshot.val());
 		// Stringify the JSON document and output the data to the HTML document
 		output.innerHTML = JSON.stringify(snapshot.val(), null, 2);
+
+		// Loop through the data in the database
+		snapshot.forEach(function(childNodes) {
+			// Output the value in the console
+			console.log(childNodes.val());
+			// Output the value onto the page
+			dbVal.innerHTML = childNodes.val();
+		});
 	});
 </script>
 
