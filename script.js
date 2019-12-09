@@ -21,6 +21,7 @@ console.log(ref);
 var dbVal = document.getElementById("dbVal");
 
 ref.on('value', function(snapshot) {
+//ref.limitToLast(4).on('value', function(snapshot) {
 	var value = snapshot.val();
 	console.log(value);
 
