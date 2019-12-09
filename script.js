@@ -38,12 +38,17 @@ ref.on('value', function(snapshot) {
 	console.log(data);
 
 	// Create the chart from data passed into the data array
+	// https://bost.ocks.org/mike/bar/
 	d3.select(".chart")
 		.selectAll("div")
 		.data(data)
 		.enter()
 		.append("div")
-		.style("width", function(d) { return d + "px"; }).text(function(d) { return d; });		
+		//.style("width", function(d) { return d + "px"; }).text(function(d) { return d; });
+		// Set the width of each new bar as a multiple of the associated data value, d
+		.style("width", function(d) { return d * 10 + "px"; })
+		// Set the text content of each bar and produce a label
+		.text(function(d) { return d; });		
 });
 
 	/*
