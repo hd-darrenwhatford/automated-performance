@@ -38,9 +38,14 @@ ref.on('value', function(snapshot) {
 
 	console.log(data);
 
+	// Declare a tooltip
+	var tooltip = d3.select("body")
+  		.append("div")
+  		.attr('class', 'tooltip');
+
 	// Create the chart from data passed into the data array
 	// https://bost.ocks.org/mike/bar/
-	d3.select(".chart")
+	var chart = d3.select(".chart")
 		.selectAll("div")
 		.data(data)
 		.enter()
@@ -50,7 +55,25 @@ ref.on('value', function(snapshot) {
 		//.style("width", function(d) { return d * 10 + "px"; })
 		.style("width", function(d) { return d + "%"; })
 		// Set the text content of each bar and produce a label
-		.text(function(d) { return d; });		
+		.text(function(d) { return d; });	
+
+  		// we define "mouseover" handler, here we change tooltip
+  		// visibility to "visible" and add appropriate test
+  		chart.on("mouseover", function(d) {
+  			// This will return the value of the bar
+    		return tooltip.style("visibility", "visible").text(d);
+  		})
+  
+  		// we move tooltip during of "mousemove"
+  		chart.on("mousemove", function() {
+    		return tooltip.style("top", (event.pageY - 30) + "px")
+      		.style("left", event.pageX + "px");
+  		})
+  
+  		// we hide our tooltip on "mouseout"
+  		chart.on("mouseout", function() {
+    		return tooltip.style("visibility", "hidden");
+  		});
 });
 
 	/*
