@@ -140,6 +140,8 @@ ref.on('value', function(snapshot) {
   		});
 });
 
+// https://bl.ocks.org/d3noob/402dd382a51a4f6eea487f9a35566de0
+
 	/*
 	// On any "value event" pass a snapshot of the database to the callback function                          
 	ref.on('value', function(snapshot) {
