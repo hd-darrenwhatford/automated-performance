@@ -1,4 +1,11 @@
-.chart div {
+.panel {
+	border: 1px solid #ccc;
+	padding: 12px;
+}
+
+.chart div,
+.chart-two div,
+.chart-three div {
 	font: 10px sans-serif;
 	background-color: steelblue;
 	text-align: right;
@@ -7,7 +14,9 @@
 	color: white;
 }
 
-.chart div:hover {
+.chart div:hover,
+.chart-two div:hover,
+.chart-three div:hover {
 	background-color: red;
 }
 

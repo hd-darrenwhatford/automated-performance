@@ -74,6 +74,70 @@ ref.on('value', function(snapshot) {
   		chart.on("mouseout", function() {
     		return tooltip.style("visibility", "hidden");
   		});
+
+	// Create the chart from data passed into the data array
+	// https://bost.ocks.org/mike/bar/
+	var chartTwo = d3.select(".chart-two")
+		.selectAll("div")
+		.data(data)
+		.enter()
+		.append("div")
+		//.style("width", function(d) { return d + "px"; }).text(function(d) { return d; });
+		// Set the width of each new bar as a multiple of the associated data value, d
+		//.style("width", function(d) { return d * 10 + "px"; })
+		.style("width", function(d) { return d + "%"; })
+		// Set the text content of each bar and produce a label
+		.text(function(d) { return d; });	
+
+  		// we define "mouseover" handler, here we change tooltip
+  		// visibility to "visible" and add appropriate test
+  		chartTwo.on("mouseover", function(d) {
+  			// This will return the value of the bar
+    		return tooltip.style("visibility", "visible").text(d);
+  		})
+  
+  		// we move tooltip during of "mousemove"
+  		chartTwo.on("mousemove", function() {
+    		return tooltip.style("top", (event.pageY - 30) + "px")
+      		.style("left", event.pageX + "px");
+  		})
+  
+  		// we hide our tooltip on "mouseout"
+  		chartTwo.on("mouseout", function() {
+    		return tooltip.style("visibility", "hidden");
+  		});
+
+	// Create the chart from data passed into the data array
+	// https://bost.ocks.org/mike/bar/
+	var chartThree = d3.select(".chart-three")
+		.selectAll("div")
+		.data(data)
+		.enter()
+		.append("div")
+		//.style("width", function(d) { return d + "px"; }).text(function(d) { return d; });
+		// Set the width of each new bar as a multiple of the associated data value, d
+		//.style("width", function(d) { return d * 10 + "px"; })
+		.style("width", function(d) { return d + "%"; })
+		// Set the text content of each bar and produce a label
+		.text(function(d) { return d; });	
+
+  		// we define "mouseover" handler, here we change tooltip
+  		// visibility to "visible" and add appropriate test
+  		chartThree.on("mouseover", function(d) {
+  			// This will return the value of the bar
+    		return tooltip.style("visibility", "visible").text(d);
+  		})
+  
+  		// we move tooltip during of "mousemove"
+  		chartThree.on("mousemove", function() {
+    		return tooltip.style("top", (event.pageY - 30) + "px")
+      		.style("left", event.pageX + "px");
+  		})
+  
+  		// we hide our tooltip on "mouseout"
+  		chartThree.on("mouseout", function() {
+    		return tooltip.style("visibility", "hidden");
+  		});
 });
 
 	/*
