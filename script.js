@@ -46,7 +46,8 @@ ref.on('value', function(snapshot) {
 		.append("div")
 		//.style("width", function(d) { return d + "px"; }).text(function(d) { return d; });
 		// Set the width of each new bar as a multiple of the associated data value, d
-		.style("width", function(d) { return d * 10 + "px"; })
+		//.style("width", function(d) { return d * 10 + "px"; })
+		.style("width", function(d) { return d + "%"; })
 		// Set the text content of each bar and produce a label
 		.text(function(d) { return d; });		
 });
