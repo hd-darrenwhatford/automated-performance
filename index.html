@@ -7,6 +7,7 @@
 	
 	<title>Performance Dashboard</title>
 
+	<link rel="stylesheet" href="foundation.min.css">
 	<link rel="stylesheet" href="main.css">
 </head>
 <body>
@@ -21,8 +22,20 @@
 <!-- Individual value from the database -->
 <div id="dbVal"></div><br>
 
-<!-- This is the chart that is displayed -->
-<p><div class="chart"></div></p>
+<div class="row">
+	<div class="large-6 columns">
+
+		<!-- This is the chart that is displayed -->
+		<div class="chart"></div>
+
+	</div>
+
+	<div class="large-6 columns">
+
+		<!-- Further chart here -->
+
+	</div>
+</div>
 
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
