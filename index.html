@@ -61,6 +61,28 @@
 
 	var dbVal = document.getElementById("dbVal");
 
+	ref.on('value', function(snapshot) {
+		var value = snapshot.val();
+		console.log(value);
+
+		// Create an empty array to store values from Firebase
+		var data = [];
+
+		// Loop through the data in the database
+		snapshot.forEach(function(childNodes) {
+			// Get each value from each node in the console e.g. Dan, 2
+			console.log(childNodes.val());
+
+			data.push(childNodes.val());
+		});
+
+		console.log(data);
+
+		// Create the chart from data passed into the data array
+		d3.select(".chart").selectAll("div").data(data).enter().append("div").style("width", function(d) { return d + "px"; }).text(function(d) { return d; });		
+	});
+
+	/*
 	// On any "value event" pass a snapshot of the database to the callback function                          
 	ref.on('value', function(snapshot) {
 		// Console log the snapshot of the database
@@ -88,6 +110,7 @@
 			d3.select(".chart").selectAll("div").data(data).enter().append("div").style("width", function(d) { return d + "px"; }).text(function(d) { return d; });
 		});
 	});
+	*/
 
 	// Add a value to the database but this overwrites what has gone before
 	/*
